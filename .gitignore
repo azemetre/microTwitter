@@ -11,3 +11,4 @@ _mailinglist
 .idea
 bower.json
 .bowerrc
+static/libs/*
