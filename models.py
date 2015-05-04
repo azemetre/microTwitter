@@ -35,7 +35,7 @@ class User(UserMixin, Model):
             )
         )
 
-    def followers(selfself):
+    def followers(self):
         """Get users following the current user"""
         return (
             User.select().join(
