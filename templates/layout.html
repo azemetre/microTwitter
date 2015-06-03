@@ -7,65 +7,75 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" href="/static/libs/normalize.css/normalize.css">
-    <link rel="stylesheet" href="/static/css/main.css">
-
+    <link rel="stylesheet" href="/static/libs/skeleton-css/skeleton.css"/>
+    <link rel="stylesheet" href="/static/css/layout.css">
+    {% block head %}{% endblock %}
     <!--[if lt IE 9]>
         <script src="/static/lib/html5shiv/dist/html5shiv.min.js"></script>
     <![endif]-->
 </head>
 <body>
+    <div class="container">
 
-    <header>
+        <header>
+            <div class="row">
+
+                <div class="one-third column home">
+                    <a class="icon-logo" href="{{ url_for('index') }}"><i class="material-icons">home</i><span>Home</span></a>
+
+                </div>
+                <div class="one-third column">
+                    <!-- say hi -->
+                    <h1 id="greet">Hello{% if current_user.is_authenticated() %} {{ current_user.username}}{% endif %}!</h1>
+                </div>
+
+                <div class="one-third column log">
+
+                    <!-- login/logout -->
+                    {% if current_user.is_authenticated() %}
+                    <a class="icon-power" title="Log out" href="{{ url_for('logout') }}"><i class="material-icons">close</i><span>Logout</span></a>
+                    {% else %}
+                    <a href="{{ url_for('login') }}" title="Log in"><i class="material-icons">account_box</i><span class="icon-power">Login</span></a>
+                    <a class="icon-profile" title="Register" href="{{ url_for('register') }}"><i class="material-icons">card_membership</i><span>Register</span></a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </header>
+
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="notification {{ category }}"><i class="material-icons md-light">face</i>{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         <div class="row">
-
-            <div class="grid-33">
-                <a class="icon-logo" href="{{ url_for('index') }}"></a>
-
-            </div>
-            <div class="grid-33">
-                <!-- say hi -->
-                <h1>Hello{% if current_user.is_authenticated() %} {{ current_user.username}}{% endif %}!</h1>
-            </div>
-
-            <div class="grid-33">
-
-                <!-- login/logout -->
-                {% if current_user.is_authenticated() %}
-                <a class="icon-power" title="Log out" href="{{ url_for('logout') }}"></a>
-                {% else %}
-                <a href="{{ url_for('login') }}" class="icon-power" title="Log in"></a>
-                <a class="icon-profile" title="Register" href="{{ url_for('register') }}"></a>
-                {% endif %}
-
+            <div class="twelve columns sub-head">
+                <nav>
+                    <a href="{{ url_for('index') }}">All</a>
+                    {% if current_user.is_authenticated() %}
+                    <a href="{{ url_for('stream', username=current_user.username) }}"><i class="material-icons">people</i><span>Following</span></a>
+                    <a class="new" href="{{ url_for('post') }}">Create New Posts</a>
+                    {% endif %}
+                </nav>
             </div>
         </div>
-    </header>
 
-    <!-- flash messages -->
-    {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="notification {{ category }}">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-
-    <div class="row">
-        <div class="main">
-            <nav>
-                <a href="{{ url_for('index') }}">All</a>
-                {% if current_user.is_authenticated() %}
-                <a href="{{ url_for('stream', username=current_user.username) }}">Following</a>
-                <a class="new" href="{{ url_for('post') }}">Create New Posts</a>
-                {% endif %}
-            </nav>
-            {% block content %}{% endblock %}
+        <div class="row">
+            <div class="twelve columns main">
+                {% block content %}{% endblock %}
+            </div>
         </div>
+
+        <footer>
+
+        </footer>
+
     </div>
-
-    <footer>
-
-    </footer>
 </body>
 </html>
