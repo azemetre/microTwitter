@@ -12,3 +12,4 @@ _mailinglist
 bower.json
 .bowerrc
 static/libs/*
+social.db
