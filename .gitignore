@@ -11,5 +11,5 @@ _mailinglist
 .idea
 bower.json
 .bowerrc
-static/libs/*
+static/libs/
 social.db
