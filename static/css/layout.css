@@ -1,0 +1,63 @@
+/*primary color palette
+orange
+100     #FFE0B2
+300     #FFB74D
+500     #FF9800
+700     #F57C00
+
+accent color
+green
+a100    #B9F6CA
+a200    #69F0AE
+a400    #00E676
+a700    #00C853
+*/
+body {
+    background-color: #F5F5F5;
+}
+header {
+    background-color: #FF9800;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1#greet {
+    font-size: 36px;
+    color: #FFFFFF;
+    margin: 0 auto;
+}
+
+.sub-head nav {
+    background-color: #FFE0B2;
+
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.sub-head nav a {
+    margin: 100px;
+    padding;
+}
+
+.main {
+    background-color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+article {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.notification {
+    background-color: #69F0AE;
+    color: rgba(255,255,255,1);
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+.notification i.material-icons {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+/*MATERIAL DESIGN ICONS*/
+.material-icons.md-light { color: rgba(255,255,255,1); }
