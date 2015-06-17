@@ -2,35 +2,39 @@
 
 {% block content %}
 <div class="row">
-    <div class="grid-25">
+    <div class="eight columns username">
         <h1>{{ user.username }}</h1>
     </div>
-    <div class="grid-50">
-        <div class="grid-33">
-            <h5>Posts</h5>
-            <p>{{ user.posts.count() }}</p>
-        </div>
-        <div class="grid-33">
-            <h5>Followers</h5>
-            <p>{{ user.followers().count() }}</p>
-        </div>
-        <div class="grid-33">
-            <h5>Following</h5>
-            <p>{{ user.following().count() }}</p>
-        </div>
-    </div>
-    <div class="grid-25">
+</div>
+
+<div class="row">
+    <div class="four columns follow">
         <!-- follow/unfollow -->
         {% if current_user.is_authenticated() %}
             {% if user != current_user %}
                 {% if not user in current_user.following() %}
-                    <a href="{{ url_for('follow', username=user.username) }}" class="small">Follow</a>
+                    <a href="{{ url_for('follow', username=user.username) }}" class="small"><i class="material-icons">mood</i><span>Follow</span></a>
                 {% else %}
-                    <a href="{{ url_for('unfollow', username=user.username) }}" class="small">Unfollow</a>
+                    <a href="{{ url_for('unfollow', username=user.username) }}" class="small"><i class="material-icons">mood_bad</i><span>Unfollow</span></a>
                 {% endif %}
             {% endif %}
         {% endif %}
     </div>
+</div>
+
+<div class="row">
+        <div class="four columns">
+            <h5>Posts</h5>
+            <p>{{ user.posts.count() }}</p>
+        </div>
+        <div class="four columns">
+            <h5>Followers</h5>
+            <p>{{ user.followers().count() }}</p>
+        </div>
+        <div class="four columns">
+            <h5>Following</h5>
+            <p>{{ user.following().count() }}</p>
+        </div>
 </div>
 
 {{ super() }}

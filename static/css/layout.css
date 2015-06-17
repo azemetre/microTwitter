@@ -15,40 +15,32 @@ a700    #00C853
 body {
     background-color: #F5F5F5;
 }
+
+/*HEADER*/
 header {
     background-color: #FF9800;
     padding: 10px;
     margin-top: 20px;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 h1#greet {
     font-size: 36px;
     color: #FFFFFF;
     margin: 0 auto;
 }
 
-.sub-head nav {
+/*SUB HEADER*/
+nav.sub-head .sub-header {
     background-color: #FFE0B2;
-
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: auto;
 }
-.sub-head nav a {
-    margin: 100px;
-    padding;
-}
-
-.main {
-    background-color: #FFFFFF;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
-}
-article {
-    width: 300px;
-    margin: 0 auto;
+nav.sub-head .sub-header a.sub-heading {
+    padding: 10%;
+    font-size: 14px;
 }
 
+/*NOTIFICATION*/
 .notification {
     background-color: #69F0AE;
     color: rgba(255,255,255,1);
@@ -58,6 +50,30 @@ article {
     margin-top: 5px;
     margin-right: 10px;
 }
+
+/*MAIN BODY*/
+.main {
+    background-color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+.username h1 {
+    font-size: 38px;
+    padding-left: 40%;
+    width: 80%;
+    margin: 0 auto;
+}
+.follow a {
+    font-size: 24px;
+    padding-right: 20%;
+}
+article {
+    width: 300px;
+    margin: 0 auto;
+}
+
+
 
 /*MATERIAL DESIGN ICONS*/
 .material-icons.md-light { color: rgba(255,255,255,1); }
