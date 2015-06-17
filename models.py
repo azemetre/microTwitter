@@ -3,6 +3,7 @@ import datetime
 from flask.ext.bcrypt import generate_password_hash
 from flask.ext.login import UserMixin
 from peewee import *
+from decouple import config
 
 DATABASE = SqliteDatabase('social.db')
 

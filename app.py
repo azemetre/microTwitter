@@ -1,16 +1,13 @@
 from flask import Flask, g, render_template, flash, redirect, url_for, abort
 from flask.ext.bcrypt import check_password_hash
 from flask.ext.login import LoginManager, login_user, logout_user, login_required, current_user
+from decouple import config
 
 import forms
 import models
 
-DEBUG = True
-PORT = 8000
-HOST = '0.0.0.0'
-
 app = Flask(__name__)
-app.secret_key = 'aueoash.sdfkl3#$fdakldf45,sdalfkj232349e.fdskle234#$sdfkl.429!'
+app.secret_key = config('SECRET_KEY')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -177,11 +174,11 @@ if __name__ == '__main__':
     models.initialize()
     try:
         models.User.create_user(
-            username='azemetre',
-            email='aaron@azemetre.me',
-            password='password',
-            admin=True
+            username=config('USERNAME'),
+            email=config('EMAIL'),
+            password=config('PASSWORD'),
+            admin=config('ADMIN', cast=bool)
         )
     except ValueError:
         pass
-    app.run(debug=DEBUG, host=HOST, port=PORT)
+    app.run(debug=config('DEBUG', cast=bool), host=config('HOST'), port=config('PORT', cast=int))
