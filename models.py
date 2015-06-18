@@ -5,7 +5,7 @@ from flask.ext.login import UserMixin
 from peewee import *
 from decouple import config
 
-DATABASE = SqliteDatabase('social.db')
+DATABASE = SqliteDatabase(config('DATABASE_NAME'))
 
 class User(UserMixin, Model):
     username = CharField(unique=True)
