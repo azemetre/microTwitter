@@ -14,3 +14,5 @@ bower.json
 static/libs/
 *.db
 .env
+social.db
+ks.db
